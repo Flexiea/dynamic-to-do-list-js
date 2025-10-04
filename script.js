@@ -17,21 +17,25 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        // Create a new list item (li)
+        // Create a new list item (li) and a span for text
         const li = document.createElement('li');
-        li.textContent = taskText;
+        li.classList.add('task-item'); // example class for li (optional, useful for styling)
+
+        const span = document.createElement('span');
+        span.textContent = taskText;
 
         // Create a remove button
         const removeButton = document.createElement('button');
         removeButton.textContent = 'Remove';
-        removeButton.className = 'remove-btn';
+        removeButton.classList.add('remove-btn'); // use classList.add instead of className
 
         // Add functionality to remove the task when clicked
-        removeButton.onclick = function() {
+        removeButton.addEventListener('click', function() {
             taskList.removeChild(li);
-        };
+        });
 
-        // Append the remove button to the list item
+        // Append text and remove button to the list item
+        li.appendChild(span);
         li.appendChild(removeButton);
 
         // Add the list item to the unordered list
